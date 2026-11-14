@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c356h5pl4p7ir"]
+
+[ext_resource type="Script" uid="uid://c64o6fc7e0icw" path="res://src/modes/startmenu/start_menu_mode.gd" id="1_22ups"]
+[ext_resource type="Texture2D" uid="uid://dkjvucxfne3t2" path="res://icon.svg" id="2_tb5u7"]
+
+[node name="StartMenuMode" type="Node2D" unique_id=285720960]
+script = ExtResource("1_22ups")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1551956897]
+position = Vector2(544, 352)
+scale = Vector2(3.28125, 3.28125)
+texture = ExtResource("2_tb5u7")
+
+[node name="Label" type="Label" parent="." unique_id=1741239773]
+offset_left = 530.0
+offset_top = 69.0
+offset_right = 570.0
+offset_bottom = 92.0
+text = "catgame cool omg"
