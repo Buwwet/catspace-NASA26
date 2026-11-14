@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b34uoq6eaqpvo"]
+
+[ext_resource type="Script" uid="uid://chr77aheaqvi8" path="res://src/modes/construction/construction_mode.gd" id="1_u0ehi"]
+[ext_resource type="PackedScene" uid="uid://csdexi407hbug" path="res://src/craft/tiles/AllTiles.tscn" id="2_snw7c"]
+[ext_resource type="PackedScene" uid="uid://b5he1841ku53k" path="res://src/modes/construction/TileTransporter.tscn" id="3_ihdmx"]
+[ext_resource type="PackedScene" uid="uid://bd5hoov73uhh7" path="res://src/craft/tiles/Tile.tscn" id="4_t2ely"]
+[ext_resource type="Texture2D" uid="uid://dkjvucxfne3t2" path="res://icon.svg" id="5_qdo0r"]
+[ext_resource type="PackedScene" uid="uid://b45tn0vyavfdn" path="res://src/modes/construction/AddTileButton.tscn" id="6_qdo0r"]
+
+[node name="ConstructionMode" type="Node2D" unique_id=2007440915]
+script = ExtResource("1_u0ehi")
+
+[node name="AllTiles" parent="." unique_id=598207287 instance=ExtResource("2_snw7c")]
+position = Vector2(-68, 62)
+
+[node name="addButton" type="Button" parent="." unique_id=1220532214]
+offset_left = 24.0
+offset_top = 551.0
+offset_right = 227.0
+offset_bottom = 612.0
+text = "NEXT"
+
+[node name="TileTransporter" parent="." unique_id=972628799 instance=ExtResource("3_ihdmx")]
+
+[node name="root" parent="." unique_id=901332596 instance=ExtResource("4_t2ely")]
+position = Vector2(595, 267)
+tile_img = ExtResource("5_qdo0r")
+
+[node name="AddTileButton" parent="." unique_id=1485613823 instance=ExtResource("6_qdo0r")]
+position = Vector2(2, 177)
+title = "add debug"
+icon = ExtResource("5_qdo0r")
