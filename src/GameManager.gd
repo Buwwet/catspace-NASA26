@@ -15,18 +15,16 @@ var current_mode_type = Mode.StartMenu;
 var current_mode: AbstractMode;
 
 ## Se guardan todos los modos para tenerlos listos.
-var modes: Dictionary[Mode, PackedScene] = {};
+var modes: Dictionary[Mode, PackedScene] = {
+	Mode.StartMenu: preload("res://src/modes/startmenu/StartMenuMode.tscn")
+};
 
 ## Because we are a singleton stuff is weird.
 func get_main_scene() -> Node:
 	return get_tree().current_scene;
 
 func _init() -> void:
-	# Load the modes.
-	
 	pass;
-
-
 
 func change_mode(type: Mode):
 	# Borramos el viejo

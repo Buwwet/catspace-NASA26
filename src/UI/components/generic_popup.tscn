@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://blp4xpagm7sgk"]
 
+[ext_resource type="Script" uid="uid://4d5bvj3v88qp" path="res://src/UI/components/generic_popup.gd" id="1_npm4o"]
+
 [node name="GenericPopup" type="Control" unique_id=566133231]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_npm4o")
 
 [node name="Dimmer" type="ColorRect" parent="." unique_id=1716496418]
 layout_mode = 1
@@ -32,20 +35,30 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1888946841]
 layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1752515840]
 layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=510860748]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Titulo"
+horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=564304784]
 layout_mode = 2
 
 [node name="BodyLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1327023764]
 unique_name_in_owner = true
+custom_maximum_size = Vector2(400, 400)
 layout_mode = 2
+text = "Cuerpo"
+autowrap_mode = 3
 
 [node name="ButtonsHBox" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=306352041]
 unique_name_in_owner = true
@@ -54,7 +67,9 @@ layout_mode = 2
 [node name="ConfirmButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBox" unique_id=270592469]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Confirmar"
 
 [node name="CancelButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsHBox" unique_id=1926505143]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Cancelar"
