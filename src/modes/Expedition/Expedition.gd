@@ -1,5 +1,5 @@
 class_name Expedition
-extends Node2D
+extends Node2D ##Cambiar a ModeManager
 
 signal mission_completed
 signal mission_failed(reason: String)
