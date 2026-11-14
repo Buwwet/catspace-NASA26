@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://csdexi407hbug"]
+
+[ext_resource type="PackedScene" uid="uid://bd5hoov73uhh7" path="res://src/craft/tiles/Tile.tscn" id="1_egxie"]
+[ext_resource type="Texture2D" uid="uid://dkjvucxfne3t2" path="res://icon.svg" id="2_5nq7i"]
+
+[node name="AllTiles" type="Node2D" unique_id=598207287]
+
+[node name="debug" parent="." unique_id=901332596 instance=ExtResource("1_egxie")]
+tile_img = ExtResource("2_5nq7i")

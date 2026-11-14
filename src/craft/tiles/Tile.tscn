@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bd5hoov73uhh7"]
+
+[ext_resource type="Script" uid="uid://dqrxkpa877pp7" path="res://src/craft/tiles/Tile.gd" id="1_uys4b"]
+[ext_resource type="Texture2D" uid="uid://dkjvucxfne3t2" path="res://icon.svg" id="2_3eqii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyuap"]
+size = Vector2(100, 100)
+
+[node name="Tile" type="Node2D" unique_id=901332596]
+script = ExtResource("1_uys4b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=825909325]
+texture = ExtResource("2_3eqii")
+
+[node name="StaticBody2D" type="CharacterBody2D" parent="." unique_id=1470785824]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=33665001]
+shape = SubResource("RectangleShape2D_gyuap")
