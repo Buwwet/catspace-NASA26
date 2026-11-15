@@ -1,0 +1,34 @@
+extends Control
+
+const MISSION_CARD_SCENE := preload("res://src/UI/components/mission_card.tscn")
+
+# Arrastra aquí tus archivos .tres desde el Inspector
+@export var missions: Array[MissionData] = []
+
+@onready var cards_container: HBoxContainer = %CardsContainer
+
+func _ready() -> void:
+	_populate_missions()
+
+func _populate_missions() -> void:
+	# Limpia tarjetas de prueba si las hubiera
+	for child in cards_container.get_children():
+		child.queue_free()
+	
+	# Genera una tarjeta por cada MissionData configurado
+	for mission in missions:
+		var card: MissionCard = MISSION_CARD_SCENE.instantiate()
+		cards_container.add_child(card)
+		card.setup(
+			mission.title,
+			mission.description,
+			mission.icon,
+			func(): _launch_mission(mission),
+			"Iniciar misión en " + mission.title
+		)
+
+func _launch_mission(mission: MissionData) -> void:
+	if mission.level_scene_path.is_empty():
+		UIManager.show_popup("Error", "Esta misión aún no tiene una escena asignada.", Callable(), false)
+		return
+	get_tree().change_scene_to_file(mission.level_scene_path)

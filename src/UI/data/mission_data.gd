@@ -1,0 +1,7 @@
+class_name MissionData
+extends Resource
+
+@export var title: String = "Planeta"
+@export_multiline var description: String = "Descripción de misión"
+@export var icon: Texture2D
+@export_file("*.tscn") var level_scene_path: String

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://b6uq4q1a1qdhx"]
+
+[ext_resource type="Texture2D" uid="uid://hbrmqoybmadl" path="res://src/UI/img/mars.jpg" id="1_qin1q"]
+[ext_resource type="Script" uid="uid://r811svb0y62h" path="res://src/UI/data/mission_data.gd" id="2_kcjcl"]
+
+[resource]
+script = ExtResource("2_kcjcl")
+title = "Marte"
+description = "Nuestro planeta hermano"
+icon = ExtResource("1_qin1q")
+level_scene_path = "uid://b34uoq6eaqpvo"
+metadata/_custom_type_script = "uid://r811svb0y62h"
