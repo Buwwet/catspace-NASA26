@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://m3ahrr0vkol3"]
+
+[ext_resource type="PackedScene" uid="uid://ci7movhhrbjbd" path="res://src/UI/components/generic_button.tscn" id="1_8a8pi"]
+[ext_resource type="Texture2D" uid="uid://dkjvucxfne3t2" path="res://icon.svg" id="2_65205"]
+
+[node name="Node2D" type="Node2D" unique_id=661863532]
+
+[node name="GenericButton" parent="." unique_id=1494883644 instance=ExtResource("1_8a8pi")]
+text = "kjlabg iuadbgu adbiuadbfvj"
+hover_tooltip = "popop"
+background_texture = ExtResource("2_65205")

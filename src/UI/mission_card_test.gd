@@ -2,7 +2,7 @@ extends AbstractMode
 
 const MISSION_CARD_SCENE := preload("res://src/UI/components/mission_card.tscn")
 
-# Arrastra aquí tus archivos .tres desde el Inspector
+# Drag your .tres files here from the Inspector
 @export var missions: Array[MissionData] = []
 
 @onready var cards_container: HBoxContainer = %CardsContainer
