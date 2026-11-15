@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ci7movhhrbjbd" path="res://src/UI/components/generic_button.tscn" id="1_ha6c1"]
 [ext_resource type="Script" uid="uid://d2orfub438lau" path="res://src/UI/generic_button_test.gd" id="1_wvhn5"]
+[ext_resource type="Texture2D" uid="uid://dmf48xdjwejwn" path="res://src/UI/img/verde.jpg" id="3_she0k"]
 
 [node name="Control" type="Control" unique_id=1502606727]
 layout_mode = 3
@@ -21,10 +22,15 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="CodeButton" parent="VBoxContainer" unique_id=1494883644 instance=ExtResource("1_ha6c1")]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1297661946]
 layout_mode = 2
+alignment = 1
 
-[node name="InspectorButton" parent="VBoxContainer" unique_id=311176135 instance=ExtResource("1_ha6c1")]
+[node name="InspectorButton" parent="VBoxContainer/HBoxContainer" unique_id=1494883644 instance=ExtResource("1_ha6c1")]
 layout_mode = 2
-text = "Botón Inspector"
-hover_tooltip = "Este tooltip viene del Inspector"
+text = "Boton Inspector"
+background_texture = ExtResource("3_she0k")
+
+[node name="CodeButton" parent="VBoxContainer/HBoxContainer" unique_id=420509426 instance=ExtResource("1_ha6c1")]
+layout_mode = 2
+text = "CodeButton"

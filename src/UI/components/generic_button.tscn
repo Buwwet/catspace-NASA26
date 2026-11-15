@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://ci7movhhrbjbd"]
 
 [ext_resource type="Script" uid="uid://d4in0wrdw4k3x" path="res://src/UI/components/generic_button.gd" id="1_l5jxo"]
+[ext_resource type="Texture2D" uid="uid://d4lr5t5d3auk7" path="res://src/UI/img/abstract-textured-backgound.jpg" id="3_1ohre"]
 
-[node name="Button" type="Button" unique_id=1494883644]
+[node name="GenericButton" type="Button" unique_id=1494883644]
 anchors_preset = -1
 anchor_right = 0.112
 anchor_bottom = 0.048
 offset_right = -121.024
 offset_bottom = -23.104
 text = "Boton Generico"
+flat = true
 script = ExtResource("1_l5jxo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1004276525]
+z_index = -1
+position = Vector2(64.24998, 17)
+scale = Vector2(0.021583341, 0.0057707997)
+texture = ExtResource("3_1ohre")

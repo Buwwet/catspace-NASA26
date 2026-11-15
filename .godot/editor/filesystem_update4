@@ -1,5 +1,10 @@
-res://src/modes/construction/ConstructionMode.tscn
-res://src/modes/construction/construction_mode.gd
-res://test/ConstructionTest.tscn
-res://src/GameManager.gd
-res://src/UI/ui_manager.tscn
+res://src/UI/components/generic_button.tscn
+res://src/UI/shaders/button_texture.gdshader
+res://src/UI/generic_button_test.tscn
+res://src/UI/components/generic_button.gd
+res://src/UI/generic_button_test.gd
+res://src/UI/mission_card_test.tscn
+res://src/UI/mission_card_test.gd
+res://src/modes/startmenu/start_menu_mode.gd
+res://src/UI/components/mission_card.gd
+res://src/UI/data/mission_data.gd
