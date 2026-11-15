@@ -15,5 +15,5 @@ func _process(delta: float) -> void:
 
 
 func on_close():
-	GameManager.change_mode(GameManager.Mode.MissionSelection);
+	GameManager.change_mode(GameManager.Mode.MissionPlanning);
 	pass;

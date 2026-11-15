@@ -6,7 +6,7 @@ extends Node2D
 @export var icon: Texture2D;
 
 # Por si lo movemos
-@onready var my_mode: ConstructionMode = get_parent().get_parent();
+@onready var my_mode: ConstructionMode = get_parent().get_parent().get_parent();
 
 func _ready() -> void:
 	$Button.text = title;

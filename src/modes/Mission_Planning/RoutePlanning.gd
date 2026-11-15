@@ -1,5 +1,5 @@
 class_name RoutePlanning
-extends Node2D
+extends AbstractMode
 
 signal plan_confirmed(plan: MissionPlan)
 
@@ -176,18 +176,10 @@ func _confirm_and_launch() -> void:
 
 	plan_confirmed.emit(plan)
 
-	if GameManager != null and "current_mission_plan" in GameManager:
-		GameManager.current_mission_plan = plan
-
-	var target_path: String = expedition_scene_path
-	if not ResourceLoader.exists(target_path):
-		target_path = "res://src/modes/expedition/ExpeditionMode.tscn"
-
-	var expedition_packed: PackedScene = load(target_path)
-	if expedition_packed:
-		var expedition_instance: Node = expedition_packed.instantiate()
-		get_tree().root.add_child(expedition_instance)
-		if expedition_instance.has_method("load_mission_plan"):
-			expedition_instance.load_mission_plan(plan)
-		get_tree().current_scene.queue_free()
-		get_tree().current_scene = expedition_instance
+	if GameManager != null:
+		GameManager.current_mission_plan = plan;
+	
+	on_close();
+		
+func on_close():
+	GameManager.change_mode(GameManager.Mode.Construccion);

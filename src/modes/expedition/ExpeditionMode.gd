@@ -37,8 +37,15 @@ var last_segment_progress: float = 0.0
 var is_running: bool = false
 var is_finished: bool = false
 
+var craft: Craft;
 
 func _ready() -> void:
+	# load craft
+	if GameManager.craft != null:
+		# Tomamos el craft como nuestro
+		var craft = GameManager.craft.duplicate();
+		$ShipMount.add_child(craft);
+	
 	# En expedición habilitamos también arrastrar el mapa con clic izquierdo
 	if solar_system != null and solar_system.has_method("set_left_drag_enabled"):
 		solar_system.set_left_drag_enabled(true)
@@ -48,7 +55,7 @@ func _ready() -> void:
 		return
 
 	# Revisa si GameManager tiene un plan guardado
-	if GameManager != null and "current_mission_plan" in GameManager and GameManager.current_mission_plan != null:
+	if GameManager.current_mission_plan != null:
 		load_mission_plan(GameManager.current_mission_plan)
 		return
 

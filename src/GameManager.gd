@@ -3,8 +3,8 @@ extends Node
 
 enum Mode {
   StartMenu,
-  Intro,
-  MissionSelection,
+  Intro, #delayed
+  MissionSelection, 
   MissionInfo,
   MissionPlanning,
   Construccion,
@@ -16,10 +16,13 @@ var current_mode_type = Mode.StartMenu;
 var current_mode: AbstractMode;
 
 var craft: Craft;
+var current_mission_plan: MissionPlan;
 
 ## Se guardan todos los modos para tenerlos listos.
 var modes: Dictionary[Mode, PackedScene] = {
 	Mode.StartMenu: preload("res://src/modes/startmenu/StartMenuMode.tscn"),
+	#Mode.MissionSelection: preload(mission)
+	Mode.MissionPlanning: preload("res://src/modes/Mission_Planning/RoutePlanning.tscn"),
 	Mode.Construccion: preload("res://src/modes/construction/ConstructionMode.tscn"),
 	Mode.Expedition: preload("res://src/modes/expedition/ExpeditionMode.tscn")
 };

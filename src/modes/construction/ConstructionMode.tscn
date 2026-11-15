@@ -3,60 +3,68 @@
 [ext_resource type="Script" uid="uid://chr77aheaqvi8" path="res://src/modes/construction/construction_mode.gd" id="1_u0ehi"]
 [ext_resource type="PackedScene" uid="uid://csdexi407hbug" path="res://src/craft/tiles/AllTiles.tscn" id="2_snw7c"]
 [ext_resource type="PackedScene" uid="uid://b5he1841ku53k" path="res://src/modes/construction/TileTransporter.tscn" id="3_ihdmx"]
+[ext_resource type="Script" uid="uid://b52x5jxvpjshc" path="res://src/World/MapCamera.gd" id="5_t2ely"]
 [ext_resource type="PackedScene" uid="uid://b45tn0vyavfdn" path="res://src/modes/construction/AddTileButton.tscn" id="6_qdo0r"]
 
 [node name="ConstructionMode" type="Node2D" unique_id=2007440915]
 script = ExtResource("1_u0ehi")
 
-[node name="AllTiles" parent="." unique_id=598207287 instance=ExtResource("2_snw7c")]
-position = Vector2(-811, 197)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1661299838]
 
-[node name="addButton" type="Button" parent="." unique_id=1220532214]
-offset_left = 19.0
-offset_top = 583.0
-offset_right = 222.0
-offset_bottom = 644.0
+[node name="addButton" type="Button" parent="CanvasLayer" unique_id=1220532214]
+offset_left = 16.0
+offset_top = 580.0
+offset_right = 219.0
+offset_bottom = 641.0
 text = "NEXT"
 
-[node name="ItemList" type="ItemList" parent="." unique_id=449928536]
+[node name="ItemList" type="ItemList" parent="CanvasLayer" unique_id=449928536]
 offset_right = 277.0
 offset_bottom = 571.0
 
-[node name="AddTileButton" parent="ItemList" unique_id=1485613823 instance=ExtResource("6_qdo0r")]
+[node name="AddTileButton" parent="CanvasLayer/ItemList" unique_id=1485613823 instance=ExtResource("6_qdo0r")]
 position = Vector2(8, 9)
 title = "add debug"
 
-[node name="AddTileButton2" parent="ItemList" unique_id=696966819 instance=ExtResource("6_qdo0r")]
+[node name="AddTileButton2" parent="CanvasLayer/ItemList" unique_id=696966819 instance=ExtResource("6_qdo0r")]
 position = Vector2(8, 151)
 title = "add fuel"
 id = "fuel"
 
-[node name="AddTileButton3" parent="ItemList" unique_id=2146194320 instance=ExtResource("6_qdo0r")]
+[node name="AddTileButton3" parent="CanvasLayer/ItemList" unique_id=2146194320 instance=ExtResource("6_qdo0r")]
 position = Vector2(12, 295)
 title = "add thruster"
 id = "thruster"
 icon = null
 
-[node name="AddTileButton4" parent="ItemList" unique_id=2059537931 instance=ExtResource("6_qdo0r")]
+[node name="AddTileButton4" parent="CanvasLayer/ItemList" unique_id=2059537931 instance=ExtResource("6_qdo0r")]
 position = Vector2(11, 337)
 title = "add science"
 id = "science"
 icon = null
 
-[node name="AddTileButton5" parent="ItemList" unique_id=1407285247 instance=ExtResource("6_qdo0r")]
+[node name="AddTileButton5" parent="CanvasLayer/ItemList" unique_id=1407285247 instance=ExtResource("6_qdo0r")]
 position = Vector2(12, 383)
 title = "add battery"
 id = "battery"
 icon = null
 
-[node name="TileTransporter" parent="." unique_id=972628799 instance=ExtResource("3_ihdmx")]
-
-[node name="Label" type="Label" parent="." unique_id=1834501811]
-offset_left = 874.0
-offset_top = 10.0
-offset_right = 1149.0
-offset_bottom = 47.0
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1834501811]
+offset_left = 871.0
+offset_top = 5.0
+offset_right = 1146.0
+offset_bottom = 106.0
 text = "STATS
 
 REQ.
 TODO"
+
+[node name="AllTiles" parent="." unique_id=598207287 instance=ExtResource("2_snw7c")]
+visible = false
+position = Vector2(-1327, 967)
+
+[node name="TileTransporter" parent="." unique_id=972628799 instance=ExtResource("3_ihdmx")]
+
+[node name="MapCamera" type="Camera2D" parent="." unique_id=434539842]
+script = ExtResource("5_t2ely")
+metadata/_custom_type_script = "uid://b52x5jxvpjshc"

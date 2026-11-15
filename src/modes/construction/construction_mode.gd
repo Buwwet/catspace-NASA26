@@ -9,9 +9,9 @@ var tiles: TileGraph;
 func _ready():	
 	root = all_tiles.find_child("cockpit").duplicate();
 	add_child(root);
-	root.position = Vector2(800, 100)
+	root.position = Vector2(0, 0)
 	
-	$addButton.button_down.connect(func():
+	$CanvasLayer/addButton.button_down.connect(func():
 		call_deferred("on_close")
 	);
 	
@@ -31,9 +31,9 @@ func create_tile(tile_name: String):
 
 func recalc_stats():
 	var stats = tiles.calculate_stats();
-	$Label.text = "STATS\n- weight: " + str(stats.weight) + "kg\n- fuel: " + str(stats.fuel) + "kg\n- science: ";
-	$Label.text += str(stats.science_capability) + "\n- electricity: " + str(stats.power_amount);
-	$Label.text += "\n deltaV: " + str(stats.get_deltav());
+	$CanvasLayer/Label.text = "STATS\n- weight: " + str(stats.weight) + "kg\n- fuel: " + str(stats.fuel) + "kg\n- science: ";
+	$CanvasLayer/Label.text += str(stats.science_capability) + "\n- electricity: " + str(stats.power_amount);
+	$CanvasLayer/Label.text += "\n deltaV: " + str(stats.get_deltav());
 	
 	#TODO req.
 
@@ -45,7 +45,9 @@ func on_close():
 	craft.map = tiles;
 	for tile in tiles.tiles:
 		tile.position -= root.position;
+		tile.set_state(Tile.TileState.Inactive);
 		tile.reparent(craft);
+		
 	
 	
 	GameManager.craft = craft;
