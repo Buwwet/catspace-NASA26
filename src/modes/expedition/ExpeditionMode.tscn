@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://jqe3pn5j3ilo"]
 
-[ext_resource type="Texture2D" uid="uid://dkjvucxfne3t2" path="res://icon.svg" id="1_6wec8"]
-[ext_resource type="Script" uid="uid://diyvnr3rlfeq8" path="res://src/modes/Expedition/Expedition.gd" id="1_vng1l"]
+[ext_resource type="Script" uid="uid://diyvnr3rlfeq8" path="res://src/modes/expedition/ExpeditionMode.gd" id="1_a8kku"]
+[ext_resource type="Texture2D" uid="uid://dkjvucxfne3t2" path="res://icon.svg" id="2_6c33l"]
 
 [node name="Expedition" type="Node2D" unique_id=865221048]
-script = ExtResource("1_vng1l")
+script = ExtResource("1_a8kku")
 
 [node name="RouteLine" type="Line2D" parent="." unique_id=1145653736]
 
@@ -12,18 +12,18 @@ script = ExtResource("1_vng1l")
 
 [node name="Sprite2D" type="Sprite2D" parent="StartPlanet" unique_id=1946828661]
 modulate = Color(0.65910804, 0.123602726, 0.23563135, 1)
-texture = ExtResource("1_6wec8")
+texture = ExtResource("2_6c33l")
 
 [node name="TargetPlanet" type="Node2D" parent="." unique_id=620037368]
 
 [node name="Sprite2D" type="Sprite2D" parent="TargetPlanet" unique_id=1419405291]
 modulate = Color(0.10980392, 0.85882354, 0, 1)
-texture = ExtResource("1_6wec8")
+texture = ExtResource("2_6c33l")
 
 [node name="ShipMount" type="Node2D" parent="." unique_id=1714230251]
 
 [node name="Sprite2D" type="Sprite2D" parent="ShipMount" unique_id=570908499]
-texture = ExtResource("1_6wec8")
+texture = ExtResource("2_6c33l")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1099235793]
 

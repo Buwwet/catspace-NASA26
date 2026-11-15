@@ -5,6 +5,7 @@ enum Mode {
   StartMenu,
   Intro,
   MissionSelection,
+  MissionInfo,
   MissionPlanning,
   Construccion,
   Expedition,
@@ -19,8 +20,8 @@ var craft: Craft;
 ## Se guardan todos los modos para tenerlos listos.
 var modes: Dictionary[Mode, PackedScene] = {
 	Mode.StartMenu: preload("res://src/modes/startmenu/StartMenuMode.tscn"),
-	
 	Mode.Construccion: preload("res://src/modes/construction/ConstructionMode.tscn"),
+	Mode.Expedition: preload("res://src/modes/expedition/ExpeditionMode.tscn")
 };
 
 ## Because we are a singleton stuff is weird.
@@ -35,6 +36,8 @@ func change_mode(type: Mode):
 	if current_mode != null:
 		current_mode.queue_free();
 	
+	print("MODE")
+	print(type)
 	if not modes.has(type):
 		push_error("Modo aun no es implementado");
 		return;

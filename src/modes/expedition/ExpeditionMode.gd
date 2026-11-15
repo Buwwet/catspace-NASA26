@@ -1,5 +1,4 @@
-class_name Expedition
-extends Node2D
+class_name ExpeditionMode extends AbstractMode
 
 signal mission_completed
 signal mission_failed(reason: String)
@@ -39,7 +38,9 @@ var is_finished: bool = false
 
 func _ready() -> void:
 	print("Expedition iniciada. Puntos cargados: ", default_waypoints.size())
-	setup_expedition(default_waypoints)
+	# TODO @mike ya existe el craft si lo creas en Construction.
+	# Para debugging crea uno nuevo vacio en GameManager
+	setup_expedition(default_waypoints);
 
 
 ## Método público para inyectar cualquier ruta externa (ej. desde MissionPlan)
@@ -113,6 +114,9 @@ func _finish_mission(success: bool, message: String) -> void:
 	else:
 		mission_failed.emit(message)
 
+func on_close():
+	# TODO: dependiendo si ganamos o perdimos guardamos los datos para el modo de MissionClear
+	GameManager.change_mode(GameManager.Mode.MissionClear);
 
 func _update_hud(status_text: String) -> void:
 	if hud_label:
