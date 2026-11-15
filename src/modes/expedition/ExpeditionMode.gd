@@ -4,7 +4,7 @@ extends AbstractMode
 signal mission_completed
 signal mission_failed(reason: String)
 
-## TODO: Conectar con el Craft (ej. max_fuel y peso vendrán del Craft)
+## TODO: Conectar con el Craft (ej. peso vendrá del Craft)
 @export var ship_speed: float = 220.0
 @export var max_fuel: float = 200.0
 @export var arrival_threshold: float = 12.0
@@ -25,10 +25,12 @@ signal mission_failed(reason: String)
 @onready var start_planet: Node2D = $StartPlanet
 @onready var target_planet: Node2D = $TargetPlanet
 @onready var ship_mount: Node2D = $ShipMount
+@onready var placeholder_sprite: Sprite2D = get_node_or_null("ShipMount/Sprite2D")
 @onready var hud_label: Label = $CanvasLayer/HudLabel
 
 var active_plan: MissionPlan
 var current_waypoint_index: int = 1
+var effective_max_fuel: float = 200.0
 var current_fuel: float = 0.0
 var segment_start_pos: Vector2 = Vector2.ZERO
 var segment_total_dist: float = 1.0
@@ -37,15 +39,20 @@ var last_segment_progress: float = 0.0
 var is_running: bool = false
 var is_finished: bool = false
 
-var craft: Craft;
+var craft: Craft = null
+
 
 func _ready() -> void:
-	# load craft
-	if GameManager.craft != null:
-		# Tomamos el craft como nuestro
-		var craft = GameManager.craft.duplicate();
-		$ShipMount.add_child(craft);
-	
+	# Cargar el Craft construido si existe en GameManager
+	if GameManager != null and GameManager.craft != null:
+		craft = GameManager.craft.duplicate() as Craft
+		if craft != null:
+			# duplicate() no copia variables sin @export como 'map', así que la transferimos
+			craft.map = GameManager.craft.map
+			ship_mount.add_child(craft)
+			if placeholder_sprite != null:
+				placeholder_sprite.visible = false
+
 	# En expedición habilitamos también arrastrar el mapa con clic izquierdo
 	if solar_system != null and solar_system.has_method("set_left_drag_enabled"):
 		solar_system.set_left_drag_enabled(true)
@@ -55,7 +62,7 @@ func _ready() -> void:
 		return
 
 	# Revisa si GameManager tiene un plan guardado
-	if GameManager.current_mission_plan != null:
+	if GameManager != null and GameManager.current_mission_plan != null:
 		load_mission_plan(GameManager.current_mission_plan)
 		return
 
@@ -67,6 +74,17 @@ func _ready() -> void:
 	load_mission_plan(fallback_plan)
 
 
+## Usa el Delta-V del Craft si fue recibido; de lo contrario usa el max_fuel configurado
+func _resolve_fuel_capacity() -> float:
+	if craft != null:
+		if craft.map != null:
+			var stats: Craft.Stats = craft.get_stats()
+			if stats != null and stats.weight > 0.0:
+				return stats.get_deltav()
+		return 0.0
+	return max_fuel
+
+
 ## Método principal para recibir el objeto de ruta desde RoutePlanning o GameManager
 func load_mission_plan(plan: MissionPlan) -> void:
 	active_plan = plan
@@ -74,8 +92,9 @@ func load_mission_plan(plan: MissionPlan) -> void:
 		push_warning("ExpeditionMode: MissionPlan inválido o con menos de 2 puntos.")
 		return
 
+	effective_max_fuel = _resolve_fuel_capacity()
 	current_waypoint_index = 1
-	current_fuel = max_fuel
+	current_fuel = effective_max_fuel
 	is_running = false
 	is_finished = false
 
@@ -89,12 +108,14 @@ func load_mission_plan(plan: MissionPlan) -> void:
 	target_planet.position = active_plan.waypoints[target_idx]
 	ship_mount.position = active_plan.waypoints[0]
 
+	var fuel_source_label: String = "Delta-V Craft" if craft != null else "Max Fuel"
 	_prepare_segment(1)
 	_update_hud(
-		"Ruta cargada (Costo: %.1f | Ahorro gravedad: %.1f | Gasolina: %.1f)\n" % [
+		"Ruta cargada (Costo: %.1f | Ahorro gravedad: %.1f | %s: %.1f)\n" % [
 			active_plan.total_fuel_cost,
 			active_plan.total_gravity_saved,
-			max_fuel
+			fuel_source_label,
+			effective_max_fuel
 		]
 		+ "ESPACIO: Iniciar/Pausar | R: Reiniciar | Arrastrar ratón / WASD: Mover mapa | Rueda: Zoom"
 	)
@@ -126,7 +147,7 @@ func _process(delta: float) -> void:
 	if direction.length() > 1.0:
 		ship_mount.rotation = direction.angle()
 
-	# Descuenta gasolina proporcional al avance del tramo (incluye giro y descuento por gravedad)
+	# Descuenta gasolina/Delta-V proporcional al avance del tramo (incluye giro y descuento por gravedad)
 	var traveled: float = segment_start_pos.distance_to(ship_mount.position)
 	var progress: float = clampf(traveled / segment_total_dist, 0.0, 1.0)
 	var delta_progress: float = maxf(0.0, progress - last_segment_progress)
@@ -135,20 +156,22 @@ func _process(delta: float) -> void:
 	current_fuel = maxf(0.0, current_fuel - segment_fuel_cost * delta_progress)
 
 	if current_fuel <= 0.0 and ship_mount.position.distance_to(target_point) > arrival_threshold:
-		_finish_mission(false, "Falla: Sin combustible antes de completar la ruta.")
+		_finish_mission(false, "Falla: Sin combustible/Delta-V antes de completar la ruta.")
 		return
 
-	_update_hud("En tránsito (Tramo %d/%d) | Gasolina: %.1f / %.1f" % [
+	var fuel_tag: String = "Delta-V" if craft != null else "Gasolina"
+	_update_hud("En tránsito (Tramo %d/%d) | %s: %.1f / %.1f" % [
 		current_waypoint_index,
 		active_plan.waypoints.size() - 1,
+		fuel_tag,
 		current_fuel,
-		max_fuel
+		effective_max_fuel
 	])
 
 	if ship_mount.position.distance_to(target_point) <= arrival_threshold:
 		current_waypoint_index += 1
 		if current_waypoint_index >= active_plan.waypoints.size():
-			_finish_mission(true, "¡Misión completada! Gasolina restante: %.1f" % current_fuel)
+			_finish_mission(true, "¡Misión completada! %s restante: %.1f" % [fuel_tag, current_fuel])
 		else:
 			_prepare_segment(current_waypoint_index)
 
@@ -165,7 +188,8 @@ func _finish_mission(success: bool, message: String) -> void:
 
 func on_close():
 	# TODO: dependiendo si ganamos o perdimos guardamos los datos para el modo de MissionClear
-	GameManager.change_mode(GameManager.Mode.MissionClear)
+	if GameManager != null:
+		GameManager.change_mode(GameManager.Mode.MissionClear)
 
 
 func _update_hud(status_text: String) -> void:
