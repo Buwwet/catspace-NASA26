@@ -36,7 +36,9 @@ layout_mode = 2
 text = "Space Cats"
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1724894074]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 alignment = 1
 
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer" unique_id=675525831]

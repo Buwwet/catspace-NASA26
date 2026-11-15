@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c64o6fc7e0icw" path="res://src/modes/startmenu/start_menu_mode.gd" id="1_22ups"]
 [ext_resource type="Texture2D" uid="uid://dkjvucxfne3t2" path="res://icon.svg" id="2_tb5u7"]
+[ext_resource type="PackedScene" uid="uid://bb1ax7wxcogu" path="res://src/UI/menu/start_menu.tscn" id="3_xka3a"]
 
 [node name="StartMenuMode" type="Node2D" unique_id=285720960]
 script = ExtResource("1_22ups")
@@ -17,3 +18,12 @@ offset_top = 69.0
 offset_right = 570.0
 offset_bottom = 92.0
 text = "catgame cool omg"
+
+[node name="StartMenu" parent="." unique_id=87578917 instance=ExtResource("3_xka3a")]
+anchors_preset = 10
+anchor_bottom = 0.0
+offset_left = 560.0
+offset_top = 425.0
+offset_right = 560.0
+offset_bottom = 425.0
+grow_vertical = 1
