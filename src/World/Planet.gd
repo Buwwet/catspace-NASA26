@@ -11,7 +11,7 @@ extends Node2D
 @export_category("Gravity")
 @export var gravity_radius: float = 240.0:
 	set(value):
-		gravity_radius = maxf(10.0, value)
+		gravity_radius = maxf(15.0, value)
 		_sync_collision_shape()
 		queue_redraw()
 
