@@ -39,3 +39,4 @@ func change_mode(type: Mode):
 	var scene: PackedScene = modes.get(type);
 	current_mode = scene.instantiate();
 	get_main_scene().add_child(current_mode);
+	

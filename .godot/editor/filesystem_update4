@@ -1,0 +1,5 @@
+res://src/modes/Mission_Planning/RoutePlanning.tscn
+res://src/modes/Mission_Planning/RoutePlanning.gd
+res://src/modes/Expedition/Expedition.gd
+res://src/GameManager.gd
+res://src/modes/Expedition/Expedition.tscn
