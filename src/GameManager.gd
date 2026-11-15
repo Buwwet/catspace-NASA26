@@ -18,11 +18,9 @@ var craft: Craft;
 
 ## Se guardan todos los modos para tenerlos listos.
 var modes: Dictionary[Mode, PackedScene] = {
-
 	Mode.StartMenu: preload("res://src/modes/startmenu/StartMenuMode.tscn"),
 	
 	Mode.Construccion: preload("res://src/modes/construction/ConstructionMode.tscn"),
-
 };
 
 ## Because we are a singleton stuff is weird.
