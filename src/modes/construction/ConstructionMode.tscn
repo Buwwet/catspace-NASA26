@@ -11,7 +11,7 @@
 script = ExtResource("1_u0ehi")
 
 [node name="AllTiles" parent="." unique_id=598207287 instance=ExtResource("2_snw7c")]
-position = Vector2(-68, 62)
+position = Vector2(-811, 197)
 
 [node name="addButton" type="Button" parent="." unique_id=1220532214]
 offset_left = 24.0
@@ -27,6 +27,6 @@ position = Vector2(595, 267)
 tile_img = ExtResource("5_qdo0r")
 
 [node name="AddTileButton" parent="." unique_id=1485613823 instance=ExtResource("6_qdo0r")]
-position = Vector2(2, 177)
+position = Vector2(8, 9)
 title = "add debug"
 icon = ExtResource("5_qdo0r")

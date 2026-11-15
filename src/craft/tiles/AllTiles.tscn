@@ -7,3 +7,23 @@
 
 [node name="debug" parent="." unique_id=901332596 instance=ExtResource("1_egxie")]
 tile_img = ExtResource("2_5nq7i")
+
+[node name="cockpit" parent="." unique_id=1274521455 instance=ExtResource("1_egxie")]
+position = Vector2(166, 0)
+id = "cockpit"
+weight = 1400.0
+science_capability = 0.5
+power_ammount = 0.6
+tile_img = ExtResource("2_5nq7i")
+
+[node name="fuel" parent="." unique_id=557798046 instance=ExtResource("1_egxie")]
+position = Vector2(310, 0)
+id = "fuel"
+weight = 300.0
+fuel = 700.0
+
+[node name="thruster" parent="." unique_id=1150613595 instance=ExtResource("1_egxie")]
+position = Vector2(450, 0)
+id = "fuel"
+weight = 300.0
+fuel = 700.0
