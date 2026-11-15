@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b45tn0vyavfdn"]
+
+[ext_resource type="Script" uid="uid://bxucjoyxi7xvl" path="res://src/modes/construction/add_tile_button.gd" id="1_b3ngp"]
+
+[node name="AddTileButton" type="Node2D" unique_id=1485613823]
+script = ExtResource("1_b3ngp")
+
+[node name="Button" type="Button" parent="." unique_id=1937819411]
+offset_right = 141.0
+offset_bottom = 30.0
