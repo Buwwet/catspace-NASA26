@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://p6hlgk1gryvv" path="res://src/World/SolarSystemMap.gd" id="1_tn8am"]
 [ext_resource type="Script" uid="uid://devan5tdgo476" path="res://src/World/Planet.gd" id="2_4pagi"]
 [ext_resource type="Script" uid="uid://b52x5jxvpjshc" path="res://src/World/MapCamera.gd" id="3_4pagi"]
+[ext_resource type="Texture2D" uid="uid://vqutsuoub5kp" path="res://assets/planets/Sol.png" id="3_84kus"]
+[ext_resource type="Texture2D" uid="uid://dse17chw13yjg" path="res://assets/planets/Tierra.png" id="4_uximr"]
+[ext_resource type="Texture2D" uid="uid://cakv73epujnhr" path="res://assets/planets/Marte.png" id="5_ek0hg"]
+[ext_resource type="Texture2D" uid="uid://bwvbf70wbsukb" path="res://assets/planets/Saturno.png" id="6_cwp8f"]
 
 [node name="SolarSystemMap" type="Node2D" unique_id=1187563552]
 script = ExtResource("1_tn8am")
@@ -10,10 +14,11 @@ script = ExtResource("1_tn8am")
 [node name="Planets" type="Node2D" parent="." unique_id=1217241727]
 
 [node name="Sol" type="Node2D" parent="Planets" unique_id=315805029]
-scale = Vector2(2.5, 2.5)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("2_4pagi")
 planet_name = "Sol"
 gravity_radius = 420.0
+planet_img = ExtResource("3_84kus")
 metadata/_custom_type_script = "uid://devan5tdgo476"
 
 [node name="Tierra" type="Node2D" parent="Planets" unique_id=1386138262]
@@ -21,6 +26,8 @@ position = Vector2(-1500, 400)
 script = ExtResource("2_4pagi")
 planet_name = "Tierra"
 gravity_radius = 420.0
+fuel_discount_ratio = 0.3
+planet_img = ExtResource("4_uximr")
 metadata/_custom_type_script = "uid://devan5tdgo476"
 
 [node name="Marte" type="Node2D" parent="Planets" unique_id=203360499]
@@ -28,14 +35,15 @@ position = Vector2(1500, -600)
 script = ExtResource("2_4pagi")
 planet_name = "Marte"
 gravity_radius = 420.0
+planet_img = ExtResource("5_ek0hg")
 metadata/_custom_type_script = "uid://devan5tdgo476"
 
 [node name="Jupiter" type="Node2D" parent="Planets" unique_id=1919248062]
 position = Vector2(2700, 650)
-scale = Vector2(1.8, 1.8)
 script = ExtResource("2_4pagi")
 planet_name = "Jupiter"
 gravity_radius = 420.0
+planet_img = ExtResource("6_cwp8f")
 metadata/_custom_type_script = "uid://devan5tdgo476"
 
 [node name="MapCamera" type="Camera2D" parent="." unique_id=1897073190]
