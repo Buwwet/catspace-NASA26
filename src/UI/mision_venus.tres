@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://dimyqawdmjor3"]
+
+[ext_resource type="Texture2D" uid="uid://bwho7ox7tagdp" path="res://src/UI/img/venus.jpg" id="1_b8vlu"]
+[ext_resource type="Script" uid="uid://r811svb0y62h" path="res://src/UI/data/mission_data.gd" id="2_gtv61"]
+
+[resource]
+script = ExtResource("2_gtv61")
+title = "Venus"
+description = "Nuestro otro planeta hermano"
+icon = ExtResource("1_b8vlu")
+metadata/_custom_type_script = "uid://r811svb0y62h"
