@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://d304v43o5i58j"]
+
+[ext_resource type="Script" uid="uid://p6hlgk1gryvv" path="res://src/World/SolarSystemMap.gd" id="1_tn8am"]
+[ext_resource type="Script" uid="uid://devan5tdgo476" path="res://src/World/Planet.gd" id="2_4pagi"]
+[ext_resource type="Script" uid="uid://b52x5jxvpjshc" path="res://src/World/MapCamera.gd" id="3_4pagi"]
+
+[node name="SolarSystemMap" type="Node2D" unique_id=1187563552]
+script = ExtResource("1_tn8am")
+
+[node name="Planets" type="Node2D" parent="." unique_id=1217241727]
+
+[node name="Sol" type="Node2D" parent="Planets" unique_id=315805029]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("2_4pagi")
+planet_name = "Sol"
+gravity_radius = 420.0
+metadata/_custom_type_script = "uid://devan5tdgo476"
+
+[node name="Tierra" type="Node2D" parent="Planets" unique_id=1386138262]
+position = Vector2(-1500, 400)
+script = ExtResource("2_4pagi")
+planet_name = "Tierra"
+gravity_radius = 420.0
+metadata/_custom_type_script = "uid://devan5tdgo476"
+
+[node name="Marte" type="Node2D" parent="Planets" unique_id=203360499]
+position = Vector2(1500, -600)
+script = ExtResource("2_4pagi")
+planet_name = "Marte"
+gravity_radius = 420.0
+metadata/_custom_type_script = "uid://devan5tdgo476"
+
+[node name="Jupiter" type="Node2D" parent="Planets" unique_id=1919248062]
+position = Vector2(2700, 650)
+scale = Vector2(1.8, 1.8)
+script = ExtResource("2_4pagi")
+planet_name = "Jupiter"
+gravity_radius = 420.0
+metadata/_custom_type_script = "uid://devan5tdgo476"
+
+[node name="MapCamera" type="Camera2D" parent="." unique_id=1897073190]
+script = ExtResource("3_4pagi")
