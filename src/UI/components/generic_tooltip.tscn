@@ -1,12 +1,22 @@
 [gd_scene format=3 uid="uid://babqvnk8c5nd7"]
 
+[ext_resource type="Script" uid="uid://jqtf2q8c4hhm" path="res://src/UI/components/generic_tooltip.gd" id="1_wulp2"]
+
 [node name="GenericTooltip" type="PanelContainer" unique_id=1355665751]
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_wulp2")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1686535150]
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="TooltipLabel" type="Label" parent="MarginContainer" unique_id=768061270]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Tooltip"
