@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b5he1841ku53k"]
+
+[ext_resource type="Script" uid="uid://d11ghjcssxx87" path="res://src/modes/construction/tile_transporter.gd" id="1_da75d"]
+
+[node name="TileTransporter" type="Node2D" unique_id=972628799]
+script = ExtResource("1_da75d")

@@ -2,8 +2,11 @@ extends AbstractMode
 
 
 @onready var planet = $"Sprite2D"
+@onready var start_menu = $"StartMenu"
 
 func _ready():
+	
+	start_menu.play_button.button_down.connect(on_close)
 	pass
 
 
@@ -12,5 +15,5 @@ func _process(delta: float) -> void:
 
 
 func on_close():
-	# We don't need to save anything.
+	GameManager.change_mode(GameManager.Mode.MissionSelection);
 	pass;

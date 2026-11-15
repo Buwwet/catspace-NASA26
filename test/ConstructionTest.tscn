@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bbp5p4x1p6ykg"]
+
+[ext_resource type="Script" uid="uid://cku3v2t6c4ttb" path="res://src/init.gd" id="1_nmpik"]
+
+[node name="Node2D" type="Node2D" unique_id=919216438]
+script = ExtResource("1_nmpik")
+start_scene = 4
