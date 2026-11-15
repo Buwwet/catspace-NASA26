@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ci7movhhrbjbd"]
+
+[ext_resource type="Script" uid="uid://d4in0wrdw4k3x" path="res://src/UI/components/generic_button.gd" id="1_l5jxo"]
+
+[node name="Button" type="Button" unique_id=1494883644]
+anchors_preset = -1
+anchor_right = 0.112
+anchor_bottom = 0.048
+offset_right = -121.024
+offset_bottom = -23.104
+text = "Boton Generico"
+script = ExtResource("1_l5jxo")

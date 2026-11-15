@@ -14,9 +14,13 @@ enum Mode {
 var current_mode_type = Mode.StartMenu;
 var current_mode: AbstractMode;
 
+var craft: Craft;
+
 ## Se guardan todos los modos para tenerlos listos.
 var modes: Dictionary[Mode, PackedScene] = {
-	Mode.StartMenu: preload("res://src/modes/startmenu/StartMenuMode.tscn")
+	Mode.StartMenu: preload("res://src/modes/startmenu/StartMenuMode.tscn"),
+	
+	Mode.Construccion: preload("res://src/modes/construction/ConstructionMode.tscn"),
 };
 
 ## Because we are a singleton stuff is weird.

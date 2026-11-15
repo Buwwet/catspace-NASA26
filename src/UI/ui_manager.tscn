@@ -1,8 +1,13 @@
-[gd_scene format=3 uid="uid://bwq38ynrcxeh4"]
+[gd_scene format=3 uid="uid://g0swki0yptes"]
 
-[ext_resource type="PackedScene" uid="uid://bb1ax7wxcogu" path="res://src/UI/menu/start_menu.tscn" id="1_w1lqd"]
+[ext_resource type="Script" uid="uid://dn2mxxnd8sfvp" path="res://src/UI/ui_manager.gd" id="1_box4v"]
+[ext_resource type="PackedScene" uid="uid://blp4xpagm7sgk" path="res://src/UI/components/generic_popup.tscn" id="2_0cyeu"]
+[ext_resource type="PackedScene" uid="uid://babqvnk8c5nd7" path="res://src/UI/components/generic_tooltip.tscn" id="3_box4v"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1295018277]
+[node name="UIManager" type="CanvasLayer" unique_id=1295018277]
 layer = 10
+script = ExtResource("1_box4v")
 
-[node name="StartMenu" parent="." unique_id=87578917 instance=ExtResource("1_w1lqd")]
+[node name="GenericPopup" parent="." unique_id=566133231 instance=ExtResource("2_0cyeu")]
+
+[node name="GenericTooltip" parent="." unique_id=1355665751 instance=ExtResource("3_box4v")]
