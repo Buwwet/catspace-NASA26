@@ -35,6 +35,7 @@ func on_close():
 		tile.position -= root.position;
 		tile.reparent(craft);
 	
+	
 	GameManager.craft = craft;
 	
 	GameManager.change_mode(GameManager.Mode.Expedition)

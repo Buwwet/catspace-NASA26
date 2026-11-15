@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://bqhdv2lpimmim"]
+
+[ext_resource type="Texture2D" uid="uid://b2cjwamn2ygjp" path="res://src/UI/img/earth.jpg" id="1_4n6bm"]
+[ext_resource type="Script" uid="uid://r811svb0y62h" path="res://src/UI/data/mission_data.gd" id="1_vspxw"]
+
+[resource]
+script = ExtResource("1_vspxw")
+title = "Tierra"
+description = "Nuestro planeta"
+icon = ExtResource("1_4n6bm")
+metadata/_custom_type_script = "uid://r811svb0y62h"

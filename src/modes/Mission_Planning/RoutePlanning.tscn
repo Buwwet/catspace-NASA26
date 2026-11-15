@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c828hate2jqsh"]
+
+[ext_resource type="Texture2D" uid="uid://dkjvucxfne3t2" path="res://icon.svg" id="1_c2wg7"]
+[ext_resource type="Script" uid="uid://bb1dabnkdf0cr" path="res://src/modes/Mission_Planning/RoutePlanning.gd" id="1_iljuk"]
+
+[node name="RoutePlanning" type="Node2D" unique_id=909728042]
+script = ExtResource("1_iljuk")
+
+[node name="ConfirmedLine" type="Line2D" parent="." unique_id=49203448]
+
+[node name="PreviewLine" type="Line2D" parent="." unique_id=1583673445]
+
+[node name="StartIcon" type="Sprite2D" parent="." unique_id=751441542]
+modulate = Color(0.19662657, 0.9999997, 0.11276773, 1)
+texture = ExtResource("1_c2wg7")
+
+[node name="TargetIcon" type="Sprite2D" parent="." unique_id=737772496]
+modulate = Color(0.9098039, 0.05490196, 0.101960786, 1)
+
+[node name="MarkersContainer" type="Node2D" parent="." unique_id=1748101415]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1619189010]
+
+[node name="HudLabel" type="Label" parent="CanvasLayer" unique_id=585675729]
+offset_right = 40.0
+offset_bottom = 23.0

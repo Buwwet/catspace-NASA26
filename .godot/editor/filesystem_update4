@@ -1,0 +1,5 @@
+res://src/modes/construction/ConstructionMode.tscn
+res://src/modes/construction/construction_mode.gd
+res://test/ConstructionTest.tscn
+res://src/GameManager.gd
+res://src/UI/ui_manager.tscn
