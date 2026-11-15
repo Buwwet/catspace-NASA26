@@ -82,8 +82,10 @@ func set_state(new: TileState):
 			pass;
 		TileState.EditStationary:
 			# Delete all of our tile grabbers
-			for grabber: Area2D in tile_grabbers:
-				grabber.queue_free();
+			for grabber in tile_grabbers.keys():
+				if is_instance_valid(grabber):
+					grabber.queue_free()
+			tile_grabbers.clear()
 		TileState.Dragged:
 			pass; #idk
 	

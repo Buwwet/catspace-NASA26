@@ -21,7 +21,7 @@ var current_mission_plan: MissionPlan;
 ## Se guardan todos los modos para tenerlos listos.
 var modes: Dictionary[Mode, PackedScene] = {
 	Mode.StartMenu: preload("res://src/modes/startmenu/StartMenuMode.tscn"),
-	#Mode.MissionSelection: preload(mission)
+	Mode.MissionSelection: preload("res://src/UI/mission_card_test.tscn"),
 	Mode.MissionPlanning: preload("res://src/modes/Mission_Planning/RoutePlanning.tscn"),
 	Mode.Construccion: preload("res://src/modes/construction/ConstructionMode.tscn"),
 	Mode.Expedition: preload("res://src/modes/expedition/ExpeditionMode.tscn")
@@ -49,4 +49,3 @@ func change_mode(type: Mode):
 	var scene: PackedScene = modes.get(type);
 	current_mode = scene.instantiate();
 	get_main_scene().add_child(current_mode);
-	

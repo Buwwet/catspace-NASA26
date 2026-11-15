@@ -29,8 +29,13 @@ func _handle_pressed() -> void:
 
 func _handle_mouse_entered() -> void:
 	if not hover_tooltip.is_empty():
-		UIManager.show_tooltip(hover_tooltip)
+		var ui_manager := get_node_or_null("/root/UIManager")
+		if ui_manager and ui_manager.has_method("show_tooltip"):
+			ui_manager.show_tooltip(hover_tooltip)
+
 
 func _handle_mouse_exited() -> void:
 	if not hover_tooltip.is_empty():
-		UIManager.hide_tooltip()
+		var ui_manager := get_node_or_null("/root/UIManager")
+		if ui_manager and ui_manager.has_method("hide_tooltip"):
+			ui_manager.hide_tooltip()

@@ -5,6 +5,8 @@ var map: TileGraph;
 func _ready() -> void:
 	pass;
 
+func get_stats() -> Stats:
+	return map.calculate_stats()
 
 # Para calcular usamos una función con depth search. 
 
