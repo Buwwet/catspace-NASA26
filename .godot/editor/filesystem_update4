@@ -1,5 +1,10 @@
-res://src/modes/construction/ConstructionMode.tscn
-res://src/modes/construction/construction_mode.gd
-res://test/ConstructionTest.tscn
-res://src/GameManager.gd
-res://src/UI/ui_manager.tscn
+res://src/modes/Mission_Planning/RoutePlanning.gd
+res://src/modes/Mission_Planning/RoutePlanning.tscn
+res://src/World/Planet.tscn
+res://src/World/Planet.gd
+res://src/World/MapCamera.gd
+res://src/World/SolarSystemMap.tscn
+res://src/World/SolarSystemMap.gd
+res://src/modes/Mission_Planning/MissionPlan.gd
+res://src/modes/expedition/ExpeditionMode.gd
+res://src/modes/expedition/ExpeditionMode.tscn

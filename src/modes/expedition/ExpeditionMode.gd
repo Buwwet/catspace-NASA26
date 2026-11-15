@@ -1,4 +1,5 @@
-class_name ExpeditionMode extends AbstractMode
+class_name ExpeditionMode
+extends AbstractMode
 
 signal mission_completed
 signal mission_failed(reason: String)
@@ -8,7 +9,7 @@ signal mission_failed(reason: String)
 @export var max_fuel: float = 200.0
 @export var arrival_threshold: float = 12.0
 
-## Ruta por defecto si se ejecuta Expedition.tscn aislada con F6
+## Ruta por defecto si se ejecuta ExpeditionMode.tscn aislada con F6
 @export var default_waypoints: Array[Vector2] = [
 	Vector2(150, 520),
 	Vector2(420, 340),
@@ -19,6 +20,7 @@ signal mission_failed(reason: String)
 	Vector2(150, 520)
 ]
 
+@onready var solar_system: Node = get_node_or_null("SolarSystemMap")
 @onready var route_line: Line2D = $RouteLine
 @onready var start_planet: Node2D = $StartPlanet
 @onready var target_planet: Node2D = $TargetPlanet
@@ -37,24 +39,24 @@ var is_finished: bool = false
 
 
 func _ready() -> void:
-	print("Expedition iniciada. Puntos cargados: ", default_waypoints.size())
-	
-	
+	# En expedición habilitamos también arrastrar el mapa con clic izquierdo
+	if solar_system != null and solar_system.has_method("set_left_drag_enabled"):
+		solar_system.set_left_drag_enabled(true)
+
 	# Si ya se llamó load_mission_plan() antes de entrar al árbol, no sobrescribir
 	if active_plan != null:
 		return
 
 	# Revisa si GameManager tiene un plan guardado
-	var gm: Node = GameManager;
-	if gm and "current_mission_plan" in gm and gm.current_mission_plan != null:
-		load_mission_plan(gm.current_mission_plan)
+	if GameManager != null and "current_mission_plan" in GameManager and GameManager.current_mission_plan != null:
+		load_mission_plan(GameManager.current_mission_plan)
 		return
 
-	# Fallback MVP: crea un MissionPlan con la ruta por defecto
+	# Fallback MVP: crea un MissionPlan con la ruta por defecto (incluyendo descuentos de gravedad si hay mapa)
 	var fallback_plan := MissionPlan.new()
 	fallback_plan.waypoints = default_waypoints.duplicate()
 	fallback_plan.target_waypoint_index = fallback_plan.waypoints.size() / 2
-	fallback_plan.recalculate()
+	fallback_plan.recalculate(0.04, 25.0, 5.0, 1.0, solar_system)
 	load_mission_plan(fallback_plan)
 
 
@@ -62,7 +64,7 @@ func _ready() -> void:
 func load_mission_plan(plan: MissionPlan) -> void:
 	active_plan = plan
 	if active_plan == null or active_plan.waypoints.size() < 2:
-		push_warning("Expedition: MissionPlan inválido o con menos de 2 puntos.")
+		push_warning("ExpeditionMode: MissionPlan inválido o con menos de 2 puntos.")
 		return
 
 	current_waypoint_index = 1
@@ -82,8 +84,12 @@ func load_mission_plan(plan: MissionPlan) -> void:
 
 	_prepare_segment(1)
 	_update_hud(
-		"Ruta cargada (Costo estimado: %.1f / Gasolina: %.1f)\nPresiona ESPACIO para iniciar | R para reiniciar"
-		% [active_plan.total_fuel_cost, max_fuel]
+		"Ruta cargada (Costo: %.1f | Ahorro gravedad: %.1f | Gasolina: %.1f)\n" % [
+			active_plan.total_fuel_cost,
+			active_plan.total_gravity_saved,
+			max_fuel
+		]
+		+ "ESPACIO: Iniciar/Pausar | R: Reiniciar | Arrastrar ratón / WASD: Mover mapa | Rueda: Zoom"
 	)
 
 
@@ -113,7 +119,7 @@ func _process(delta: float) -> void:
 	if direction.length() > 1.0:
 		ship_mount.rotation = direction.angle()
 
-	# Descuenta gasolina proporcional al avance del tramo (incluye penalización por giro del tramo)
+	# Descuenta gasolina proporcional al avance del tramo (incluye giro y descuento por gravedad)
 	var traveled: float = segment_start_pos.distance_to(ship_mount.position)
 	var progress: float = clampf(traveled / segment_total_dist, 0.0, 1.0)
 	var delta_progress: float = maxf(0.0, progress - last_segment_progress)
@@ -149,9 +155,11 @@ func _finish_mission(success: bool, message: String) -> void:
 	else:
 		mission_failed.emit(message)
 
+
 func on_close():
 	# TODO: dependiendo si ganamos o perdimos guardamos los datos para el modo de MissionClear
-	GameManager.change_mode(GameManager.Mode.MissionClear);
+	GameManager.change_mode(GameManager.Mode.MissionClear)
+
 
 func _update_hud(status_text: String) -> void:
 	if hud_label:
