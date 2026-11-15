@@ -11,7 +11,14 @@ var current_state: TileState = TileState.Inactive;
 
 @export_category("info")
 @export var id: String = "null";
-@export var weight: int = 1;
+
+@export var weight: float = 0.0;
+@export var thrust: int = 0;
+@export var fuel: float = 0.0;
+@export var science_capability = 0.0;
+@export var power_ammount = 0.0;
+
+
 @export var size: Vector2 = Vector2(1, 1);
 
 ## Posible tiles that can be connected
@@ -30,6 +37,8 @@ var connected_tiles: Dictionary[Vector2, Tile] = {};
 
 @onready var sprite = $Sprite2D;
 @onready var body = $StaticBody2D;
+
+
 
 
 func _ready() -> void:
@@ -55,12 +64,14 @@ func grabTo(area: Area2D, body_RID: RID, body: Node2D):
 		
 	# We are all in construction still.
 	t.set_state(TileState.EditStationary);
-	# TODO: report to GRAFO
 	
 	# Reparent to ship
 	t.call_deferred("reparent", get_parent());
-	
 	t.set_deferred("position", position + con_point * 100)
+	
+	# Remove grabber
+	tile_grabbers.erase(area);
+	area.queue_free();
 	pass;
 
 
