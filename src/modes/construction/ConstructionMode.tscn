@@ -22,23 +22,20 @@ text = "NEXT"
 offset_right = 277.0
 offset_bottom = 571.0
 
-[node name="AddTileButton" parent="CanvasLayer/ItemList" unique_id=1485613823 instance=ExtResource("6_qdo0r")]
-position = Vector2(8, 9)
-title = "add debug"
-
 [node name="AddTileButton2" parent="CanvasLayer/ItemList" unique_id=696966819 instance=ExtResource("6_qdo0r")]
-position = Vector2(8, 151)
+position = Vector2(3, 20)
 title = "add fuel"
 id = "fuel"
+icon = null
 
 [node name="AddTileButton3" parent="CanvasLayer/ItemList" unique_id=2146194320 instance=ExtResource("6_qdo0r")]
-position = Vector2(12, 295)
+position = Vector2(13, 182)
 title = "add thruster"
 id = "thruster"
 icon = null
 
 [node name="AddTileButton4" parent="CanvasLayer/ItemList" unique_id=2059537931 instance=ExtResource("6_qdo0r")]
-position = Vector2(11, 337)
+position = Vector2(10, 325)
 title = "add science"
 id = "science"
 icon = null
@@ -47,6 +44,24 @@ icon = null
 position = Vector2(12, 383)
 title = "add battery"
 id = "battery"
+icon = null
+
+[node name="AddTileButton6" parent="CanvasLayer/ItemList" unique_id=1485613823 instance=ExtResource("6_qdo0r")]
+position = Vector2(13, 428)
+title = "add fin_left"
+id = "fin_left"
+icon = null
+
+[node name="AddTileButton7" parent="CanvasLayer/ItemList" unique_id=566752704 instance=ExtResource("6_qdo0r")]
+position = Vector2(16, 476)
+title = "add fin_right"
+id = "fin_right"
+icon = null
+
+[node name="AddTileButton8" parent="CanvasLayer/ItemList" unique_id=646092858 instance=ExtResource("6_qdo0r")]
+position = Vector2(13, 520)
+title = "add nose"
+id = "nose"
 icon = null
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1834501811]

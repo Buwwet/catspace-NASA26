@@ -2,6 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://bd5hoov73uhh7" path="res://src/craft/tiles/Tile.tscn" id="1_egxie"]
 [ext_resource type="Texture2D" uid="uid://dkjvucxfne3t2" path="res://icon.svg" id="2_5nq7i"]
+[ext_resource type="Texture2D" uid="uid://b42ui3pspnvfo" path="res://assets/tile/2.png" id="3_5nq7i"]
+[ext_resource type="Texture2D" uid="uid://whu3csuruon" path="res://assets/tile/3.png" id="4_quufk"]
+[ext_resource type="Texture2D" uid="uid://dcgo37ay6s4u0" path="res://assets/tile/6.png" id="5_0h1ao"]
+[ext_resource type="Texture2D" uid="uid://dotipfh4rnq1u" path="res://assets/tile/4.png" id="6_0h1ao"]
+[ext_resource type="Texture2D" uid="uid://whai2iagcjjm" path="res://assets/tile/5.png" id="7_f01ci"]
+[ext_resource type="Texture2D" uid="uid://dv6chpbs18wif" path="res://assets/tile/1.png" id="7_t188n"]
+[ext_resource type="Texture2D" uid="uid://b06h28yk5ofel" path="res://assets/tile/Telescopio.png" id="9_3ia06"]
+[ext_resource type="Texture2D" uid="uid://h5qnulp6c7gm" path="res://assets/tile/Energia.png" id="10_kfhyk"]
 
 [node name="AllTiles" type="Node2D" unique_id=598207287]
 
@@ -14,15 +22,15 @@ id = "cockpit"
 weight = 1400.0
 science_capability = 0.5
 power_ammount = 0.6
-connection_points = Array[Vector2]([Vector2(0, 1)])
-tile_img = ExtResource("2_5nq7i")
+connection_points = Array[Vector2]([Vector2(0, 1), Vector2(0, -1)])
+tile_img = ExtResource("3_5nq7i")
 
 [node name="fuel" parent="." unique_id=557798046 instance=ExtResource("1_egxie")]
 position = Vector2(310, 0)
 id = "fuel"
 weight = 300.0
 fuel = 700.0
-tile_img = ExtResource("2_5nq7i")
+tile_img = ExtResource("4_quufk")
 
 [node name="thruster" parent="." unique_id=1150613595 instance=ExtResource("1_egxie")]
 position = Vector2(450, 0)
@@ -30,7 +38,25 @@ id = "thruster"
 weight = 1000.0
 thrust = 1
 connection_points = Array[Vector2]([Vector2(0, -1)])
-tile_img = ExtResource("2_5nq7i")
+tile_img = ExtResource("5_0h1ao")
+
+[node name="fin_left" parent="." unique_id=627417314 instance=ExtResource("1_egxie")]
+position = Vector2(450, 161)
+id = "thruster"
+connection_points = Array[Vector2]([Vector2(1, 0), Vector2(-1, 0)])
+tile_img = ExtResource("6_0h1ao")
+
+[node name="nose" parent="." unique_id=1816166531 instance=ExtResource("1_egxie")]
+position = Vector2(255, 158)
+id = "thruster"
+connection_points = Array[Vector2]([Vector2(0, 1), Vector2(0, -1)])
+tile_img = ExtResource("7_t188n")
+
+[node name="fin_right" parent="." unique_id=2011936424 instance=ExtResource("1_egxie")]
+position = Vector2(590, 156)
+id = "thruster"
+connection_points = Array[Vector2]([Vector2(1, 0), Vector2(-1, 0)])
+tile_img = ExtResource("7_f01ci")
 
 [node name="science" parent="." unique_id=956137644 instance=ExtResource("1_egxie")]
 position = Vector2(583, 0)
@@ -38,11 +64,11 @@ id = "science"
 weight = 500.0
 science_capability = 2.0
 power_ammount = -1.0
-tile_img = ExtResource("2_5nq7i")
+tile_img = ExtResource("9_3ia06")
 
 [node name="battery" parent="." unique_id=1783286206 instance=ExtResource("1_egxie")]
 position = Vector2(718, 0)
 id = "science_kit"
 weight = 500.0
 power_ammount = 1.0
-tile_img = ExtResource("2_5nq7i")
+tile_img = ExtResource("10_kfhyk")
