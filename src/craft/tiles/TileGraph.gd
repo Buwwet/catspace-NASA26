@@ -13,3 +13,20 @@ func _init(ts: Array[Tile], r: Tile) -> void:
 
 func add_tile(t: Tile):
 	tiles.push_back(t);
+
+
+func calculate_stats():
+	var weight: float = 0.0;
+	var thrust: int = 0;
+	var fuel: float = 0.0;
+	var science_capability = 0.0;
+	var power_amount = 0.0;
+	
+	for tile in tiles:
+		weight += tile.weight;
+		thrust += tile.thrust;
+		fuel += tile.fuel;
+		science_capability += tile.science_capability;
+		power_amount += tile.power_ammount;
+	
+	return Craft.Stats.new(weight, thrust, fuel, science_capability, power_amount);

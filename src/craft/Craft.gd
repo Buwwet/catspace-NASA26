@@ -24,4 +24,17 @@ class Stats extends Resource:
 	var science_capability = 0.0;
 	
 	# cantidad de equipo electrico
-	var power_ammount = 0.0;
+	var power_amount = 0.0;
+	
+	func _init(w, t, f, s, p):
+		weight = w;
+		thrust = t;
+		fuel = f;
+		science_capability = s;
+		power_amount = p;
+		
+	func get_deltav() -> float:
+		if thrust == 0:
+			return 0;
+		# isp * g * (wet mass / dry mass)
+		return 400 * 9.81 * (fuel / weight);

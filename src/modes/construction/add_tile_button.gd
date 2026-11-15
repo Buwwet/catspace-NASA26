@@ -3,10 +3,10 @@ extends Node2D
 
 @export var title = "TITLE";
 @export var id = "debug";
-@export var icon: Texture2D = load("res://icon.svg");
+@export var icon: Texture2D;
 
 # Por si lo movemos
-@onready var my_mode: ConstructionMode = get_parent();
+@onready var my_mode: ConstructionMode = get_parent().get_parent();
 
 func _ready() -> void:
 	$Button.text = title;

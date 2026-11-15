@@ -64,12 +64,14 @@ func grabTo(area: Area2D, body_RID: RID, body: Node2D):
 		
 	# We are all in construction still.
 	t.set_state(TileState.EditStationary);
-	# TODO: report to GRAFO
 	
 	# Reparent to ship
 	t.call_deferred("reparent", get_parent());
-	
 	t.set_deferred("position", position + con_point * 100)
+	
+	# Remove grabber
+	tile_grabbers.erase(area);
+	area.queue_free();
 	pass;
 
 
