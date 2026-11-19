@@ -49,7 +49,8 @@ func on_close():
 		tile.reparent(craft);
 		
 	
-	
+	craft.map.recorrido_width();
+	craft.map.recorrido_depth();
 	GameManager.craft = craft;
 	
 	GameManager.change_mode(GameManager.Mode.Expedition)

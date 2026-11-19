@@ -42,25 +42,25 @@ tile_img = ExtResource("5_0h1ao")
 
 [node name="fin_left" parent="." unique_id=627417314 instance=ExtResource("1_egxie")]
 position = Vector2(450, 161)
-id = "thruster"
+id = "fin_left"
 connection_points = Array[Vector2]([Vector2(1, 0), Vector2(-1, 0)])
 tile_img = ExtResource("6_0h1ao")
 
 [node name="nose" parent="." unique_id=1816166531 instance=ExtResource("1_egxie")]
 position = Vector2(255, 158)
-id = "thruster"
+id = "nose"
 connection_points = Array[Vector2]([Vector2(0, 1), Vector2(0, -1)])
 tile_img = ExtResource("7_t188n")
 
 [node name="fin_right" parent="." unique_id=2011936424 instance=ExtResource("1_egxie")]
 position = Vector2(590, 156)
-id = "thruster"
+id = "fin_right"
 connection_points = Array[Vector2]([Vector2(1, 0), Vector2(-1, 0)])
 tile_img = ExtResource("7_f01ci")
 
 [node name="science" parent="." unique_id=956137644 instance=ExtResource("1_egxie")]
 position = Vector2(583, 0)
-id = "science"
+id = "science_kit"
 weight = 500.0
 science_capability = 2.0
 power_ammount = -1.0
@@ -68,7 +68,7 @@ tile_img = ExtResource("9_3ia06")
 
 [node name="battery" parent="." unique_id=1783286206 instance=ExtResource("1_egxie")]
 position = Vector2(718, 0)
-id = "science_kit"
+id = "battery"
 weight = 500.0
 power_ammount = 1.0
 tile_img = ExtResource("10_kfhyk")

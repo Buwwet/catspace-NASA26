@@ -38,7 +38,8 @@ var connected_tiles: Dictionary[Vector2, Tile] = {};
 @onready var sprite = $Sprite2D;
 @onready var body = $StaticBody2D;
 
-
+# Parar recorridos.
+var known = false;
 
 
 func _ready() -> void:
